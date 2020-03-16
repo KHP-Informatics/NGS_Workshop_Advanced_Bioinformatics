@@ -114,23 +114,23 @@ $ mkdir trimmed_fastq
 The raw_fastq data we will be working with need to be downloaded first:
 
 ```
-wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R1.fastq.gz
+$ wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R1.fastq.gz
 
-wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R2.fastq.gz
+$ wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R2.fastq.gz
 
-wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/chr22.genes.hg19.bed
+$ wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/chr22.genes.hg19.bed
 
 ```
 
 Then we need to copy the raw fastq files to our `untrimmed_fastq` directory and the bed file in the `data` directory:
 
-`$ mv *fastq.gz untrimmed_fastq`
+`$ mv *fastq.gz ~/ngs_course/dnaseq/data/untrimmed_fastq`
 
 `$ mv chr22.genes.hg19.bed ~/ngs_course/dnaseq/data`
 
 Later in the workflow when we perform alignment, we will require reference files to map against. Please download it and then  you can copy it into `data`:
 
-`wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz`
+`$ wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz`
 
 `$ mv hg19.fa.gz ~/ngs_course/dnaseq/data/`
 
