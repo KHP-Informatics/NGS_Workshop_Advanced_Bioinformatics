@@ -14,7 +14,7 @@ Approximate time: 20 minutes
 
 The workflow we will be using for our DNA-Seq analysis is provided below with a brief description of each step.
 
-<img src=../img/rnaseq_workflow.png width=500>
+<img src=../download.png width=500>
 
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
