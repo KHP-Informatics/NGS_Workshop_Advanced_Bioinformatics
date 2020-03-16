@@ -1,7 +1,7 @@
 ---
-title: "Introuducing FASTQ format and error profiles"
-author: "Mary Piper, Meeta Mistry"
-date: "Tuesday, November 10, 2015"
+title: "Introuducing how to set up a bioinformatics project"
+author: "Alfredo Iacoangeli"
+date: "16/03/2020"
 ---
 
 Approximate time: 20 minutes
@@ -10,18 +10,20 @@ Approximate time: 20 minutes
 
 * Setting up your project space for an NGS workflow
 
-## RNA-seq Workflow
+## DNA-seq Workflow
 
-The workflow we will be using for our RNA-Seq analysis is provided below with a brief description of each step.
+The workflow we will be using for our DNA-Seq analysis is provided below with a brief description of each step.
 
 <img src=../img/rnaseq_workflow.png width=500>
 
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
-3. Index the reference genome for use by STAR
-4. Align reads to reference genome using STAR (splice-aware aligner)
-5. Count the number of reads mapping to each gene using htseq-count
-6. Statistical analysis (count normalization, linear modeling using R-based tools)
+3. Index the reference genome for use by BWA
+4. Align reads to reference genome using BWA 
+5. Duplicate marking
+6. Variant calling using Freebayes
+7. Variant filtering
+8. Variant annotation using Annovar
 
 Before we jump into any kind of bioinformatics analysis, we are going to take a moment and spend some time discussing ways in which you can get organized.
 
@@ -39,7 +41,7 @@ You should approach your sequencing project in a very similar way to how you do 
 
 Every computational analysis you do is going to spawn many files, and inevitability, you'll want to run some of those analysis again. Genomics projects can quickly accumulate hundreds of files across tens of folders. Before you start any analysis it is best to first get organized and **create a planned storage space for your workflow**.
 
-We will start by creating a directory that we can use for the rest of the RNA-seq session:
+We will start by creating a directory that we can use for the rest of the DNA-seq session:
 
 First, make sure that you are in your home directory,
 
@@ -50,10 +52,12 @@ this should give the result: `/home/user_name`
 
 **Tip** If you were not in your home directory, the easiest way to get there is to enter the command `cd` - which always returns you to home. 
 
-Now, make a directory for the RNA-seq analysis within the `ngs_course` folder using the `mkdir` command
+Now, make a directory for the DNA-seq analysis within the `ngs_course` folder using the `mkdir` command
 
 ```
-$ mkdir ngs_course/rnaseq
+$ mkdir ngs_course
+
+$ mkdir ngs_course/dnaseq
 ```
 
 Next you want to set up the following structure within your project directory to keep files organized:
@@ -81,7 +85,7 @@ rnaseq/
 Let's create a directory for our project by changing into `rnaseq` and then using `mkdir` to create the four directories.
 
 ```
-$ cd ngs_course/rnaseq
+$ cd ngs_course/dnaseq
 $ mkdir data meta results logs
 ``` 
 
@@ -99,21 +103,36 @@ drwxrwsr-x 2 rsk27 rsk27   0 Jun 17 11:21 logs/
 drwxrwsr-x 2 rsk27 rsk27   0 Jun 17 11:21 meta/
 drwxrwsr-x 2 rsk27 rsk27   0 Jun 17 11:21 results/
 ```
-Now we will create the subdirectories to setup for our RNA-Seq analysis, and populate them with data where we can. The first step will be checking the quality of our data, and trimming the files if necessary. We need to create two directories within the `data` directory, one folder for untrimmed reads and another for our trimmed reads: 
+Now we will create the subdirectories to setup for our DNA-Seq analysis, and populate them with data where we can. The first step will be checking the quality of our data, and trimming the files if necessary. We need to create two directories within the `data` directory, one folder for untrimmed reads and another for our trimmed reads: 
 
 ```
-$ cd ~/ngs_course/rnaseq/data
+$ cd ~/ngs_course/dnaseq/data
 $ mkdir untrimmed_fastq
 $ mkdir trimmed_fastq
 ```
     
-The raw_fastq data we will be working with is currently in the `unix_lesson/raw_fastq` directory. We need to copy the raw fastq files to our `untrimmed_fastq` directory:
+The raw_fastq data we will be working with need to be downloaded first:
 
-`$ cp ~/ngs_course/unix_lesson/raw_fastq/*fq untrimmed_fastq`
+```
+wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R1.fastq.gz
 
-Later in the workflow when we perform alignment, we will require reference files to map against. These files are also in the `unix_lesson` directory, you can copy the entire folder over into `data`:
+wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/WES01_chr22m_R2.fastq.gz
 
-`$ cp -r ~/ngs_course/unix_lesson/reference_data .`
+wget https://s3-eu-west-1.amazonaws.com/workshopdata2017/chr22.genes.hg19.bed
+
+```
+
+Then we need to copy the raw fastq files to our `untrimmed_fastq` directory and the bed file in the `data` directory:
+
+`$ mv *fastq.gz untrimmed_fastq`
+
+`$ mv chr22.genes.hg19.bed ~/ngs_course/dnaseq/data`
+
+Later in the workflow when we perform alignment, we will require reference files to map against. Please download it and then  you can copy it into `data`:
+
+`wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz`
+
+`$ mv hg19.fa.gz ~/ngs_course/dnaseq/data/`
 
 ### Documenting
 
@@ -139,11 +158,11 @@ In your lab notebook, you likely keep track of the different reagents and kits u
 
 **Exercise**
 
-1. Take a moment to create a README for the `rnaseq` folder (hint: use `vim` to create the file). Give a short description of the project and brief descriptions of the types of file you would be storing within each of the sub-directories. 
+1. Take a moment to create a README for the `dnaseq` folder (hint: use `vim` to create the file). Give a short description of the project and brief descriptions of the types of file you would be storing within each of the sub-directories. 
 
 ***
 
 
 ----
 
-*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+*This lesson has been developed using material produced by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
