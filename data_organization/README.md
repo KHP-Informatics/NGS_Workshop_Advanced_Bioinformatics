@@ -16,14 +16,14 @@ The workflow we will be using for our DNA-Seq analysis is provided below with a 
 
 <img src=download.png width=500>
 
-1. Quality control - Assessing quality using FastQC
-2. Quality control - Trimming and/or filtering reads (if necessary)
-3. Index the reference genome for use by BWA
-4. Align reads to reference genome using BWA 
-5. Duplicate marking
-6. Variant calling using Freebayes
-7. Variant filtering
-8. Variant annotation using Annovar
+1. Sequence quality reports - Assessing quality using FastQC
+2. Sequence quality filters - Trimming and/or filtering reads (if necessary)
+3. Alignment - Index the reference genome for use by BWA
+4. Alignment - Align reads to reference genome using BWA 
+5. Post alignment Read Filters - Duplicate marking
+6. Variant calling - Variant calling using Freebayes
+7. Variant quality filters - Variant filtering
+8. Variant annotation - Variant annotation using Annovar
 
 Before we jump into any kind of bioinformatics analysis, we are going to take a moment and spend some time discussing ways in which you can get organized.
 
