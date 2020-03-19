@@ -85,7 +85,7 @@ The next two arguments are input file and output file names. These are then foll
 
 Change directories to the untrimmed fastq data location:
 
-`$ cd ~/ngs_course/rnaseq/data/untrimmed_fastq`
+`$ cd ~/ngs_course/dnaseq/data/untrimmed_fastq`
 
 Since the *Trimmomatic* command is complicated and we will be running it a number of times, let's draft the command in a **text editor**, such as vim or nano, etc. When finished, we will copy and paste the command into the terminal.
 
@@ -123,6 +123,8 @@ Input Read Pairs: 505987 Both Surviving: 490813 (97.00%) Forward Only Surviving:
 TrimmomaticPE: Completed successfully
 ```
 
+
+***_Now that you have trimmed the sequencing data, please repeat the "assessing_quality" (fastqc) workshop using the trimmed data._***
 
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
