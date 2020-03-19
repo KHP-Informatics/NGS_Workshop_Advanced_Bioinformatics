@@ -4,11 +4,13 @@ author: "Alfredo Iacoangeli"
 date: "18/03/2020"
 ---
 
+## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
+
 ## Learning Objectives:
 * Explore trimming strategies for improving the quality of FASTQ reads
 * Use a `for loop` to automate operations on multiple files
 
-##Quality Control - Trimming
+## Quality Control - Trimming
 
 So far we have run our raw reads through FastQC to assess the quality of our sequencing reads. Now we are going to improve the quality of our reads, by **trimming** off any "bad" bases.
 
