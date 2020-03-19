@@ -69,12 +69,6 @@ NOTICE: Finished writing N SNP genotypes (N transitions and N transversions) and
 
 ### Run Annovar table function
 
-* script
-```bash
-$ perl annovar.pl -i ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput -r hg19 -o ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.annovar
-```
-
-
 * csv output
 ```bash
 $ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19 -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f -otherinfo -nastring . -csvout
