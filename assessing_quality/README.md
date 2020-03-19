@@ -18,7 +18,7 @@ The sequence data that you will be analysing is from a 3-year-old male who prese
 
 The patient’s exome was sequenced using the paired-end method on an Illumina HiSeq 2500 following target enrichment using the Nextera Rapid Capture Exome and Expanded Exome kit.
 
-This data is simulated - but it does represents a real life scenario
+This data is simulated - but it does represent a real life scenario
 
 
 ## Quality Control of FASTQ files
