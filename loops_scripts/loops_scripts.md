@@ -4,6 +4,7 @@ author: "Alfredo Iacoangeli"
 date: "16/03/2020"
 ---
 
+## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
 
 ## Learning Objectives
 
@@ -135,7 +136,7 @@ $ for filename in *.fastq.gz
 > done
 ````
 
-####What does this loop do? 
+#### What does this loop do? 
 Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
 
 In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file one at a time. For each iteration the filename gets stored in the temporary variable called `filename`. Once the commands are executed for one file, the loop then stores the next filename in `filename` and executes the same commands on the next file. In the long run, it's best to use a name that will help point out a variable's function, so your future self will understand what you are thinking now.
