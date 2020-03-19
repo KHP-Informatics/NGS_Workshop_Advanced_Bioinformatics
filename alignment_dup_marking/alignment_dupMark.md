@@ -175,15 +175,15 @@ dnaseq
 	│   ├── reference
 	│   │   └── hg19.fa.gz
 	│   │   └── hg19.fa.gz.amb
-  │   │   └── etc
+	│   │   └── etc
  	|   ├── untrimmed_fastq
 	│   │   └── WES01_chr22m_R1.fastq.gz
-  │   │   └── etc
+	│   │   └── etc
 	│   ├── trimmed_fastq
 	│   │   ├── WES01_chr22m_trimmed_R_1P.fastq
 	│   │   ├── etc     
 	│   └── aligned_data
-  │       └── WES01_chr22m.sam
+	│       └── WES01_chr22m.sam
 	├── meta
 	├── results
 	└── logs
