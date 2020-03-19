@@ -59,3 +59,53 @@ $ bgzip ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf
 $ tabix -p vcf ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz
 
 '''
+
+
+## Filtering the VCF
+
+As we run Freebayes with default parameters, the resulting VCF contains a large number of "bad" calls. The Freebayes Information Fields we will use for filtering are:
+
+QUAL=probability that there is a polymorphism at the loci described by the record: 1 - P(locus is homozygous given the data).
+AO=Alternate allele observations, with partial observations recorded fractionally
+SAF=Number of alternate observations on the forward strand
+SAR=Number of alternate observations on the reverse strand
+RPL=Reads Placed Left: number of reads supporting the alternate balanced to the left (5’) of -the alternate allele
+RPR=Reads Placed Right: number of reads supporting the alternate balanced to the right (3’) of the alternate allele
+What calls do we “know” are poor (w.r.t. freebayes VCF annotations)?
+- low-quality calls (QUAL < N)
++ also, maybe QUAL is high but QUAL / AO is low
+- loci with low read depth (DP < N)
+- alleles that are only seen on one strand
++ remove by “SAF > 0 & SAR > 0”
+- alleles that are only observed by reads placed to the left or right
++ remove by “RPL > 0 & RPR > 0”
+
+We will apply the following suggested freebayes hard filter for human diploid sequencing and use vcffilter to apply it:
+
+QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1
+
+QUAL > 1: removes horrible sites
+QUAL / AO > 10 : additional contribution of each obs should be 10 log units (~ Q10 per read)
+SAF > 0 & SAR > 0 : reads on both strands
+RPR > 1 & RPL > 1 : at least two reads “balanced” to each side of the site
+
+'''
+$ vcffilter -f "QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1" ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz > ~/ngs_course/dnaseq/data/results/WES01_chr22m_filtered.vcf
+'''
+
+The bed file chr22.genes.b37.bed describes the exome sequences and genes that have been targeted in your trial data. Using bedtools we can filter the vcf file for the regions in chr22.genes.b37.bed: 
+
+'''
+
+$ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed  > ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+
+$ bgzip ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+
+$ tabix -p vcf ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+
+'''
+
+
+### Exercise
+
+Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
