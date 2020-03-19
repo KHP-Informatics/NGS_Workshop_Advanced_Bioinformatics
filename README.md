@@ -16,6 +16,6 @@ Please do the practical modules in the following order:
 
 7-variant_calling_and_filtering
 
-8-annotation (available from Monday the 23rd)
+8-annotation
 
 9-bash pipeline (available from Monday the 23rd)
