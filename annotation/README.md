@@ -46,6 +46,7 @@ $ tar -zxvf annovar.latest.tar.gz
 Before using Annovar you need to download the databases it uses for the annotation. The following commands will download some nasic ones: 
 
 ```
+$ cd annovar
 $ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
 $ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ensGene humandb/
 $ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar 1000g2015aug humandb/
