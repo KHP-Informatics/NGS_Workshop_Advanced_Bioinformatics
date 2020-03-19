@@ -162,6 +162,38 @@ In your lab notebook, you likely keep track of the different reagents and kits u
 
 ***
 
+###Install the tools you need for the following workshops
+
+Before going ahead with the other NGS practical materials we need to install the tools requiered for the analyses. In the Kotacoda workshops you have learned how to deploy Anaconda locally and use it to install other tools (https://katacoda.com/sjnewhouse/scenarios/bioconda_genmed)
+
+Please install Anaconda locally on your OpenStack instance and use it to install Trimmomatic, Fastqc, Samtools, Picard, Bedtools, BWA, Freebayes and any other tools you will need for this module.
+
+'''
+
+$ cd ~/
+
+$ wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh
+
+$ chmod +x ./Anaconda3-5.3.0-Linux-x86_64.sh
+
+$ bash ./Anaconda3-5.3.0-Linux-x86_64.sh
+
+$ source ~/.bashrc
+
+$ conda config --add channels defaults
+$ conda config --add channels bioconda
+$ conda config --add channels conda-forge
+
+$ conda install samtools
+$ conda install bwa
+$ conda install freebayes
+$ conda install picard
+$ conda install bedtools
+$ conda install trimmomatic
+$ conda install fastqc
+$ conda install any_other_tool_you_need
+
+'''
 
 ----
 
