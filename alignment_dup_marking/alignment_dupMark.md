@@ -4,6 +4,8 @@ author: "Alfredo Iacoangeli"
 date: "16/03/2020"
 ---
 
+## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
+
 ## Learning Objectives:
 
 * Understanding the alignment method BWA utilizes to align sequence reads to the reference genome
@@ -208,11 +210,11 @@ $ ls
 WES01_chr22m.bam  WES01_chr22m.sam  WES01_chr22m.bam  WES01_chr22m_sorted.bam.bai
 ```
 
-##Post Alignment QC and Filtering
+## Post Alignment QC and Filtering
 
 We will Use 1) NGS: Picard > MarkDuplicates and then 2) SAMtools > Filter SAM or BAM, output SAM or BAM files to make a new BAM file which flags duplicate molecules and excludes poor quality reads.
 
-###MarkDuplicates
+### MarkDuplicates
 
 We will use Picard to mark duplaced reads. This tool examines aligned records in the supplied SAM or BAM dataset to locate duplicate molecules. All records are then written to the output file with the duplicate records flagged. Two files are produced, 1) the new BAM file with duplicate reads marked and 2) a metrics file summarising the number of duplicate reads found.
 
@@ -247,7 +249,7 @@ $ samtools index WES01_chr22m_sorted_filtered.bam
 '''
 
 
-##Excercise
+## Excercise
 
 So far we have followed the main steps you performed with Galaxy during the first module. We have not gone through a few of the alignment statistics part yet and we will not provide detailed instructions about how to do it in the command line.
 As an excercise please try to perform the Alignment Statistics steps of the Galaxy workshops on your terminal by yourself. You alignement statistis analysis should include the following steps:
