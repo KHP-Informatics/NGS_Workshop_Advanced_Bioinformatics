@@ -14,7 +14,7 @@ date: "16/03/2020"
 * Running BWA on multiple samples
 * Marking duplicates with picard
 * Filter BAM based on mapping quality and bitwise flags
-* Some challenging excercises
+* Some challenging exercises
 
 ## Read Alignment
 
@@ -57,7 +57,7 @@ Note: To use BWA, you need to first index the genome with `bwa index'.
 
 ## BWA MEM 
 
-BWA (please visit the developper's github https://github.com/lh3/bwa) is a software package for mapping DNA sequences against a large reference genome, such as the human genome. It consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to a few megabases. BWA-MEM and BWA-SW share similar features such as the support of long reads and chimeric alignment, but BWA-MEM, which is the latest, is generally recommended as it is faster and more accurate. BWA-MEM also has better performance than BWA-backtrack for 70-100bp Illumina reads.
+BWA (please visit the developer's github https://github.com/lh3/bwa) is a software package for mapping DNA sequences against a large reference genome, such as the human genome. It consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to a few megabases. BWA-MEM and BWA-SW share similar features such as the support of long reads and chimeric alignment, but BWA-MEM, which is the latest, is generally recommended as it is faster and more accurate. BWA-MEM also has better performance than BWA-backtrack for 70-100bp Illumina reads.
 
 For all the algorithms, BWA first needs to construct the FM-index for the reference genome (the index command). Alignment algorithms are invoked with different sub-commands: aln/samse/sampe for BWA-backtrack, bwasw for BWA-SW and mem for the BWA-MEM algorithm.
 
@@ -126,7 +126,7 @@ Note: Please read the man page for detailed description of the command line and 
 
 ### Making the index
 
-When building the reference index, BWA will generate several files. Let's create a forlder for the reference and its index files and then run bwa to generate the index files.
+When building the reference index, BWA will generate several files. Let's create a folder for the reference and its index files and then run bwa to generate the index files.
 
 ```
 $ mkdir -p ~/ngs_course/dnaseq/data/reference
@@ -216,7 +216,7 @@ We will Use 1) NGS: Picard > MarkDuplicates and then 2) SAMtools > Filter SAM or
 
 ### MarkDuplicates
 
-We will use Picard to mark duplaced reads. This tool examines aligned records in the supplied SAM or BAM dataset to locate duplicate molecules. All records are then written to the output file with the duplicate records flagged. Two files are produced, 1) the new BAM file with duplicate reads marked and 2) a metrics file summarising the number of duplicate reads found.
+We will use Picard to mark duplicated reads. This tool examines aligned records in the supplied SAM or BAM dataset to locate duplicate molecules. All records are then written to the output file with the duplicate records flagged. Two files are produced, 1) the new BAM file with duplicate reads marked and 2) a metrics file summarising the number of duplicate reads found.
 
 If you want to read more about pcr duplicates visit http://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/
 
@@ -238,7 +238,7 @@ We are going to filter the reads according to the following criteria:
   iii. The read fails platform/vendor quality checks
   iv. The read is a PCR or optical duplicate
 
-To interprete the samtools flags we are using to filter please see https://broadinstitute.github.io/picard/explain-flags.html
+To interpret the samtools flags we are using to filter please see https://broadinstitute.github.io/picard/explain-flags.html
 
 
 ```
@@ -252,7 +252,7 @@ $ samtools index WES01_chr22m_sorted_filtered.bam
 ## Excercise
 
 1)So far we have followed the main steps you performed with Galaxy during the first module. We have not gone through a few of the alignment statistics part yet and we will not provide detailed instructions about how to do it in the command line.
-As an excercise please try to perform the Alignment Statistics steps of the Galaxy workshops on your terminal by yourself. You alignement statistis analysis should include the following steps:
+As an exercise please try to perform the Alignment Statistics steps of the Galaxy workshops on your terminal by yourself. You alignment statistics analysis should include the following steps:
  
  - Flagstats
  - Viewing the BAM File
@@ -261,7 +261,7 @@ As an excercise please try to perform the Alignment Statistics steps of the Gala
  - Depth of Coverage
 
 The first three steps can be performed with samtools. The fourth( Determine the distribution of insert sizes) will require you use picard. Picard is less intuitive to use comparing with samtools and I would suggest you look for its documentation on line. The last one (Depth of Coverage) will require you to use bedtools.
-You are welcome to go though the Galaxy workshop material to refresh your memory. If you don't have the matirial anymore please contact Alfredo on Slack or Email (alfredo.iacoangeli@kcl.ac.uk).
+You are welcome to go though the Galaxy workshop material to refresh your memory. If you don't have the material anymore please contact Alfredo on Slack or Email (alfredo.iacoangeli@kcl.ac.uk).
 
 2) Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
 
