@@ -47,9 +47,9 @@ Before using Annovar you need to download the databases it uses for the annotati
 
 ```
 $ cd annovar
+$ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar knownGene humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ensGene humandb/
-$ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar 1000g2015aug humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp150 humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20180603 humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb/
@@ -59,7 +59,7 @@ $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp31a_inte
 ### VCF to Annovar input format
 
 ```bash
-$ ./convert2annovar.pl -format vcf4 ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf.gz > ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.avinput
+$ ./convert2annovar.pl -format vcf4 ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf.gz > ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput
 ```
 ```bash
 NOTICE: Finished reading N lines from VCF file
@@ -71,13 +71,13 @@ NOTICE: Finished writing N SNP genotypes (N transitions and N transversions) and
 
 * script
 ```bash
-$ perl annovar.pl -i ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.avinput -r hg19 -o ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.annovar
+$ perl annovar.pl -i ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput -r hg19 -o ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.annovar
 ```
 
-```
+
 * csv output
 ```bash
-$ ./table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out WES01_chr22m_filtered_chr22 -remove -protocol refGene,ensGene,avsnp150,1000g2015aug_all,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f,f,f -otherinfo -nastring . -csvout
+$ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19 -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f -otherinfo -nastring . -csvout
 ```
 
 The output will be in csv format, please download it via FileZilla and open it with Office Excel or any other speadsheet software. 
