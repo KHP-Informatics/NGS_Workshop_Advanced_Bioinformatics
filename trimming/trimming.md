@@ -125,7 +125,9 @@ Input Read Pairs: 505987 Both Surviving: 490813 (97.00%) Forward Only Surviving:
 TrimmomaticPE: Completed successfully
 ```
 
+### Exercise
 
+Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
 ***_Now that you have trimmed the sequencing data, please repeat the "assessing_quality" (fastqc) workshop using the trimmed data._***
 
 
