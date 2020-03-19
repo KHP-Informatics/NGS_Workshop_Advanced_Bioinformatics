@@ -101,7 +101,7 @@ $ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/data/results/results/WES
 
 $ bgzip ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
 
-$ tabix -p vcf ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+$ tabix -p vcf ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf.gz
 
 ```
 
