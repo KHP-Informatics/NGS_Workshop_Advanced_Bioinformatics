@@ -251,7 +251,7 @@ $ samtools index WES01_chr22m_sorted_filtered.bam
 
 ## Excercise
 
-So far we have followed the main steps you performed with Galaxy during the first module. We have not gone through a few of the alignment statistics part yet and we will not provide detailed instructions about how to do it in the command line.
+1)So far we have followed the main steps you performed with Galaxy during the first module. We have not gone through a few of the alignment statistics part yet and we will not provide detailed instructions about how to do it in the command line.
 As an excercise please try to perform the Alignment Statistics steps of the Galaxy workshops on your terminal by yourself. You alignement statistis analysis should include the following steps:
  
  - Flagstats
@@ -263,6 +263,7 @@ As an excercise please try to perform the Alignment Statistics steps of the Gala
 The first three steps can be performed with samtools. The fourth( Determine the distribution of insert sizes) will require you use picard. Picard is less intuitive to use comparing with samtools and I would suggest you look for its documentation on line. The last one (Depth of Coverage) will require you to use bedtools.
 You are welcome to go though the Galaxy workshop material to refresh your memory. If you don't have the matirial anymore please contact Alfredo on Slack or Email (alfredo.iacoangeli@kcl.ac.uk).
 
+2) Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
