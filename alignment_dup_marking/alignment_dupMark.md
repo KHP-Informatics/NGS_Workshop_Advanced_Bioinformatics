@@ -12,7 +12,7 @@ date: "16/03/2020"
 * Running BWA on multiple samples
 * Marking duplicates with picard
 * Filter BAM based on mapping quality and bitwise flags
-* 
+* Some challenging excercises
 
 ## Read Alignment
 
