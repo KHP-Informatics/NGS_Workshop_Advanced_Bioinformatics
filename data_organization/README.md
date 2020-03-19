@@ -63,7 +63,7 @@ $ mkdir ngs_course/dnaseq
 Next you want to set up the following structure within your project directory to keep files organized:
 
 ```
-rnaseq/
+dnaseq/
   ├── data/
   ├── meta/
   ├── results/
@@ -82,7 +82,7 @@ rnaseq/
 * **`logs/`**: It is important to keep track of the commands you run and the specific pararmeters you used, but also to have a record of any standard output that is generated while running the command. 
 
 
-Let's create a directory for our project by changing into `rnaseq` and then using `mkdir` to create the four directories.
+Let's create a directory for our project by changing into `dnaseq` and then using `mkdir` to create the four directories.
 
 ```
 $ cd ngs_course/dnaseq
