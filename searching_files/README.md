@@ -149,7 +149,7 @@ chr22   17103730        17103787        psiTPTE22-chr22-17103731-17103787
 
 > The BED file is a tab-delimited region annotation file often used in NGS analyses. For more information on this file format, check out the [Ensembl site](http://www.ensembl.org/info/website/upload/bed.html). 
 
-The columns in the **BED file contain the genomic coordinates of a genomic region  (in our case exons) and then an optional number of optional tab-delimited fielads. In our case the optional field contains the gene name and the exon genomic cooordinates in a dash delimited format **. Note that sometimes an exon can be associated with multiple different genes and/or transcripts. 
+The columns in the **BED file contain the genomic coordinates of a genomic region  (in our case exons) and then an optional number of optional tab-delimited fields. In our case the optional field contains the gene name and the exon genomic coordinates in a dash delimited format **. Note that sometimes an exon can be associated with multiple different genes and/or transcripts. 
 
 Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many total exons are present on chromosome 1 using `chr1-hg19_genes.gtf`?**
 
@@ -161,9 +161,9 @@ To determine the number of total exons on chromosome 1, we are going to perform 
 	4. Count the total number of exons
 	
 #### Subsetting dataset
-We will define an exon by it's genomic coordinates. Therefore, we only need the feature type and the genomic location (chr, start, stop, and strand) information to find the total number of exons. The columns corresponding to this information are 1, 3, 4, 5, and 7. 
+We will define an exon by its genomic coordinates. Therefore, we only need the feature type and the genomic location (chr, start, stop, and strand) information to find the total number of exons. The columns corresponding to this information are 1, 3, 4, 5, and 7. 
 
-'cut' is a program that will extract columns from files.  It is a very good command to know.  Let's first try out the 'cut' command on a small dataset (just the first 5 lines of chr1-hg19_genes.gtf) to make sure we have the command correct:
+'cut' is a program that will extract columns from files.  It is a very good command to know.  Let's first try out the 'cut' command on a small dataset (just the first 5 lines of chr22.genes.hg19.bed) to make sure we have the command correct:
 
 `$ cut -f1,2,3 chr22.genes.hg19.bed | head -n 5`
    
@@ -201,7 +201,7 @@ Now, we need to remove those exons that show up multiple times. As there are non
 
 We can use a new tool, `sort`, to remove exons that show up more than once.  We can use the `sort` command with the `-u` option to return only unique lines.
 
-`$ sort -u chr22.genes.hg19_plus5.bed | wc -l #the line count should be the orginal one now`
+`$ sort -u chr22.genes.hg19_plus5.bed | wc -l #the line count should be the original one now`
 
     
 
