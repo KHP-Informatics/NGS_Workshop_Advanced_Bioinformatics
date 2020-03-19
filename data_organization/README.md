@@ -81,7 +81,7 @@ dnaseq/
 
 * **`results/`**: This folder will contain the output from the different tools you implement in your workflow. To stay organized, you should create sub-folders specific to each tool/step of the workflow. 
 
-* **`logs/`**: It is important to keep track of the commands you run and the specific pararmeters you used, but also to have a record of any standard output that is generated while running the command. 
+* **`logs/`**: It is important to keep track of the commands you run and the specific parameters you used, but also to have a record of any standard output that is generated while running the command. 
 
 
 Let's create a directory for our project by changing into `dnaseq` and then using `mkdir` to create the four directories.
@@ -149,7 +149,7 @@ to describe the analysis and the files that were generated.
 
 #### Log files
 
-In your lab notebook, you likely keep track of the different reagents and kits used for a specific protocol. Similarly, recording information about the tools and and parameters is imporatant for documenting your computational experiments. 
+In your lab notebook, you likely keep track of the different reagents and kits used for a specific protocol. Similarly, recording information about the tools and parameters is important for documenting your computational experiments. 
 
 * Keep track of software versions used
 * Record information on parameters used and summary statistics at every step (e.g., how many adapters were removed, how many reads did not align)
@@ -166,7 +166,7 @@ In your lab notebook, you likely keep track of the different reagents and kits u
 
 ### Install the tools you need for the following workshops
 
-Before going ahead with the other NGS practical materials we need to install the tools requiered for the analyses. In the Kotacoda workshops you have learned how to deploy Anaconda locally and use it to install other tools (https://katacoda.com/sjnewhouse/scenarios/bioconda_genmed)
+Before going ahead with the other NGS practical materials we need to install the tools required for the analyses. In the Kotacoda workshops you have learned how to deploy Anaconda locally and use it to install other tools (https://katacoda.com/sjnewhouse/scenarios/bioconda_genmed)
 
 Please install Anaconda locally on your OpenStack instance and use it to install Trimmomatic, Fastqc, Samtools, Picard, Bedtools, BWA, Freebayes and any other tools you will need for this module.
 
