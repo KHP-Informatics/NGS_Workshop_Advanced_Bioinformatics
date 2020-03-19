@@ -4,7 +4,7 @@ author: "Alfredo Iacoangeli"
 date: "16/03/2020"
 ---
 
-## IMPORTANT: the paths to files and directories in this workshop are only exaples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
+## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
 
 Approximate time: 20 minutes
 
