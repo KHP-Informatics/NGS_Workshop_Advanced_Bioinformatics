@@ -37,6 +37,7 @@ We have used FileZilla before in a previous part of the practical (https://githu
 After uploading the annovar.latest.tar.gz file onto OpenStack, please unpack it and set annovar up:
 
 '''
+
 $ tar -zxvf annovar.latest.tar.gz
 
 '''
