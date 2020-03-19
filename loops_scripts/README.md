@@ -24,7 +24,7 @@ Shell scripts are text files that contain commands we want to run. As with any f
 
 We are going to take the commands we repeat frequently and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
 
-1. Tell us what is our current working directory
+1. Tell us what our current working directory is
 2. Lists the contents of the directory 
 
 First let's move into the `unix_lesson` directory and open a new file using `vim`:
@@ -187,7 +187,7 @@ do
   echo $filename;
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > $filename-badreads.fastq;
+  grep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq;
 ``` 
   
 We'll also count the number of these reads and put that in a new file, using the count (`-c`) flag of `grep`:
@@ -217,7 +217,7 @@ do
   echo $filename; 
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > $filename-badreads.fastq;
+  grep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq;
 
   # grab the number of bad reads and write it to a summary file
   grep -cH NNNNNNNNNN $filename >> bad-reads.count.summary;
