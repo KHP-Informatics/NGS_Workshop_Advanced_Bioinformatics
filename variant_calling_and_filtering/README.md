@@ -47,7 +47,7 @@ FreeBayes uses short-read alignments (BAM files with Phred+33 encoded quality sc
 
 In its simplest operation, freebayes requires only two inputs: a FASTA reference sequence, and a BAM-format alignment file sorted by reference position. However, the referenced must be indexed. We are going to convert to text format the reference (as required bysamtools faidx), index it with samtools faidx, call variants with freebayes, compress the resultining variant file (VCF) and index the VCF with tabix:
 
-'''
+```
 $ zcat ~/ngs_course/dnaseq/data/reference/hg19.fa.gz > ~/ngs_course/dnaseq/data/reference/hg19.fa 
 
 $ samtools faidx ~/ngs_course/dnaseq/data/reference/hg19.fa
@@ -58,7 +58,7 @@ $ bgzip ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf
 
 $ tabix -p vcf ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz
 
-'''
+```
 
 
 ## Filtering the VCF
@@ -89,13 +89,13 @@ QUAL / AO > 10 : additional contribution of each obs should be 10 log units (~ Q
 SAF > 0 & SAR > 0 : reads on both strands
 RPR > 1 & RPL > 1 : at least two reads “balanced” to each side of the site
 
-'''
+```
 $ vcffilter -f "QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1" ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz > ~/ngs_course/dnaseq/data/results/WES01_chr22m_filtered.vcf
-'''
+```
 
 The bed file chr22.genes.b37.bed describes the exome sequences and genes that have been targeted in your trial data. Using bedtools we can filter the vcf file for the regions in chr22.genes.b37.bed: 
 
-'''
+```
 
 $ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed  > ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
 
@@ -103,7 +103,7 @@ $ bgzip ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
 
 $ tabix -p vcf ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
 
-'''
+```
 
 
 ### Exercise
