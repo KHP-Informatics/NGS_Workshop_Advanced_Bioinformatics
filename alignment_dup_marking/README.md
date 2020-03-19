@@ -22,7 +22,7 @@ Now that we have our quality-trimmed reads, we can move on to read alignment. We
 
 Please run bwa and spend a moment to see its options. Try to understand what they mean and research them on line if something is not clear.
 
-'''
+```
 $ bwa
 
 Program: bwa (alignment via Burrows-Wheeler transformation)
@@ -53,7 +53,7 @@ Note: To use BWA, you need to first index the genome with `bwa index'.
       first. Please `man ./bwa.1' for the manual.
 
 
-'''
+```
 
 ## BWA MEM 
 
@@ -63,7 +63,7 @@ For all the algorithms, BWA first needs to construct the FM-index for the refere
 
 Please run bwa and spend a moment to see its options. Try to understand what they mean and research them on line if something is not clear.
 
-'''
+```
 
 $ bwa mem
 
@@ -122,7 +122,7 @@ Input/output options:
                      FR orientation only. [inferred]
 
 Note: Please read the man page for detailed description of the command line and options.
-
+```
 
 ### Making the index
 
@@ -220,11 +220,11 @@ We will use Picard to mark duplaced reads. This tool examines aligned records in
 
 If you want to read more about pcr duplicates visit http://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/
 
-'''
+```
 $ picard MarkDuplicates I=WES01_chr22m_sorted.bam O=WES01_chr22m_sorted_marked.bam M=marked_dup_metrics.txt
 
 $ samtools index WES01_chr22m_sorted_marked.bam
-'''
+```
 
 
 ### Filter BAM based on mapping quality and bitwise flags using samtools
@@ -241,12 +241,12 @@ We are going to filter the reads according to the following criteria:
 To interprete the samtools flags we are using to filter please see https://broadinstitute.github.io/picard/explain-flags.html
 
 
-'''
+```
 $ samtools view -F 1796  -q 20 -o WES01_chr22m_sorted_filtered.bam WES01_chr22m_sorted_marked.bam
 
 $ samtools index WES01_chr22m_sorted_filtered.bam
 
-'''
+```
 
 
 ## Excercise
