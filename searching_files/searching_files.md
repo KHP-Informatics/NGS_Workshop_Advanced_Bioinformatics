@@ -4,6 +4,8 @@ author: "Alfredo Iacoangeli"
 date: "16/03/2020"
 ---
 
+## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
+
 Approximate time: 60 minutes
 
 ## Learning Objectives
@@ -128,7 +130,7 @@ efficiently. If you want to be proficient at using the shell, you must
 learn to become proficient with the pipe and redirection operators:
 `|`, `>`, `>>`.
 
-##Practice with searching and redirection
+## Practice with searching and redirection
 
 Finally, let's use the new tools in our kit and a few new ones to examine our region annotation file, **chr22.genes.hg19.bed**, which we will be using later to find the genomic coordinates of all known exons on chromosome 22.
 
@@ -158,7 +160,7 @@ To determine the number of total exons on chromosome 1, we are going to perform 
 	3. Remove duplicate regions
 	4. Count the total number of exons
 	
-####Subsetting dataset
+#### Subsetting dataset
 We will define an exon by it's genomic coordinates. Therefore, we only need the feature type and the genomic location (chr, start, stop, and strand) information to find the total number of exons. The columns corresponding to this information are 1, 3, 4, 5, and 7. 
 
 'cut' is a program that will extract columns from files.  It is a very good command to know.  Let's first try out the 'cut' command on a small dataset (just the first 5 lines of chr1-hg19_genes.gtf) to make sure we have the command correct:
@@ -181,7 +183,7 @@ Our output looks good, so let's cut these columns from the whole dataset (not ju
 
 Check the cut file to make sure that it looks good using `less`. 
 
-####Extracting genomic coordinates of exon features
+#### Extracting genomic coordinates of exon features
 We only want the RABL2B exons, so let's use `grep` to only keep the exon lines and save to file, **`RABL2B_exons`**:
 
 `$ grep RABL2B chr22.genes.hg19.bed > RABL2B_exons`
