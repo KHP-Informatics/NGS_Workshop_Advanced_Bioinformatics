@@ -199,9 +199,9 @@ $ cd ~/ngs_course/dnaseq/data/aligned_data
 
 Now we need to convert the sam file into bam format, sort it and generate an index using samtools.
 ```
-$ samtools view -h -b WES01_chr22m_R1.sam > WES01_chr22m.bam
+$ samtools view -h -b WES01_chr22m.sam > WES01_chr22m.bam
 
-$ samtools sort WES01_chr22m_R1.bam > WES01_chr22m_sorted.bam
+$ samtools sort WES01_chr22m.bam > WES01_chr22m_sorted.bam
 
 $ samtools index WES01_chr22m_sorted.bam #This will generate a .bai index file
 
