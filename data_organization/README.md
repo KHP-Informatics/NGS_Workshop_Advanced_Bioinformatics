@@ -182,10 +182,6 @@ $ bash ./Anaconda3-5.3.0-Linux-x86_64.sh
 
 $ source ~/.bashrc
 
-$ conda config --add channels defaults
-$ conda config --add channels bioconda
-$ conda config --add channels conda-forge
-
 $ conda install samtools
 $ conda install bwa
 $ conda install freebayes
