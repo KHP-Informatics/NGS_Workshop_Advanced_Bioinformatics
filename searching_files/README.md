@@ -21,21 +21,21 @@ search within files without even opening them, using `grep`. Grep is a command-l
 utility for searching plain-text data sets for lines matching a pattern or regular expression (regex).
 Let's give it a try!
 
-Suppose we want to see how many reads in our file `WES01_chr22m_R1.fastq.gz` are really bad, with 10 consecutive Ns  
-Let's search for the string NNNNNNNNNN: 
+Suppose we want to see how many reads in our file `WES01_chr22m_R1.fastq.gz` are bad, with 6 consecutive Ns  
+Let's search for the string NNNNNN: 
 
 `$ cd ~/ngs_course/dnaseq/data/untrimmed_fastq`
 
 `$ zcat WES01_chr22m_R1.fastq.gz > WES01_chr22m_R1.fastq #fastq.gz is a compressed format. I need to uncompress it first`
 
-`$ grep NNNNNNNNNN WES01_chr22m_R1.fastq`
+`$ grep NNNNNN WES01_chr22m_R1.fastq`
 
 We get back a lot of lines.  What if we want to see the whole fastq record for each of these reads?
 We can use the '-B' and '-A' arguments for grep to return the matched line plus one before (-B 1) and two
 lines after (-A 2). Since each record is four lines and the second line is the sequence, this should
 return the whole record.
 
-`$ grep -B1 -A2 NNNNNNNNNN WES01_chr22m_R1.fastq`
+`$ grep -B1 -A2 NNNNNN WES01_chr22m_R1.fastq`
 
 for example:
 
@@ -73,10 +73,10 @@ to a file, so that we can look at it later.
 
 The redirection command for putting something in a file is `>`
 
-Let's try it out and put all the sequences that contain 'NNNNNNNNNN'
+Let's try it out and put all the sequences that contain 'NNNNNN'
 from all the files in to another file called `bad_reads.txt`.
 
-`$ grep -B1 -A2 NNNNNNNNNN Mov10_oe_1.subset.fq > bad_reads.txt`
+`$ grep -B1 -A2 NNNNNN Mov10_oe_1.subset.fq > bad_reads.txt`
 
 `$ ls -l`
 
@@ -86,7 +86,7 @@ a look at it and see if it has what you think it should.
 
 If we use '>>', it will append to rather than overwrite a file.  This can be useful for saving more than one search, for example:
     
-`$ grep -B1 -A2 NNNNNNNNNN WES01_chr22m_R1.fastq >> bad_reads.txt`
+`$ grep -B1 -A2 NNNNNN WES01_chr22m_R1.fastq >> bad_reads.txt`
 
 `$ ls -l`
 
@@ -104,7 +104,7 @@ When it was all whizzing by before, we wished we could just slow it down and
 look at it, like we can with `less`. Well it turns out that we can! We pipe
 the `grep` command to `less`
 
-`$ grep -B1 -A2 NNNNNNNNNN WES01_chr22m_R1.fastq | less`
+`$ grep -B1 -A2 NNNNNN WES01_chr22m_R1.fastq | less`
 
 Now we can use the arrows to scroll up and down and use `q` to get out.
 
@@ -113,12 +113,12 @@ We can also do something tricky and use the command `wc`. `wc` stands for
 it to count the number of lines we're getting back from our `grep` command.
 And that will magically tell us how many sequences we're finding.
 
-`$ grep NNNNNNNNNN WES01_chr22m_R1.fastq | wc`
+`$ grep NNNNNN WES01_chr22m_R1.fastq | wc`
 
 This command tells us the number of lines, words and characters in the file. If we
 just want the number of lines, we can use the `-l` flag for `lines`.
 
-`$ grep NNNNNNNNNN WES01_chr22m_R1.fastq | wc -l`
+`$ grep NNNNNN WES01_chr22m_R1.fastq | wc -l`
 
 Redirecting is not super intuitive, but it's powerful for stringing
 together these different commands, so you can do whatever you need to do.
