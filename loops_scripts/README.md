@@ -27,7 +27,7 @@ We are going to take the commands we repeat frequently and save them into a file
 1. Tell us what our current working directory is
 2. Lists the contents of the directory 
 
-First let's move into the `unix_lesson` directory and open a new file using `vim`:
+First let's move into the `dnaseq` directory and open a new file using `vim`:
 
 	$ cd ~/ngs_course/dnaseq
 	$ vim listing.sh
@@ -87,7 +87,7 @@ Let's try another command using the variable that we have created. In the last l
 
 > *NOTE:* The variables we create in a session are system-wide, and independent of where you are in the filesystem. This is why we can reference it from any directory. However, it is only available for your current session. If you exit the cluster and login again at a later time, the variables you have created will no longer exist.
 
-Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once. Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `raw_fastq` directory as values. 
+Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once. Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `untrimmed_fastq` directory as values. 
 
 To list all the filenames in the directory that have a `.fq` extension, we know the command is:
 
@@ -137,11 +137,11 @@ $ for filename in *.fastq.gz
 ````
 
 #### What does this loop do? 
-Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
+Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fastq.gz` in the current directory. The output is almost identical to what we had before.
 
-In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file one at a time. For each iteration the filename gets stored in the temporary variable called `filename`. Once the commands are executed for one file, the loop then stores the next filename in `filename` and executes the same commands on the next file. In the long run, it's best to use a name that will help point out a variable's function, so your future self will understand what you are thinking now.
+In this case the list of files is specified using the asterisk wildcard: `*.fastq.gz`, i.e. all files that end in `.fastq.gz`. Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file one at a time. For each iteration the filename gets stored in the temporary variable called `filename`. Once the commands are executed for one file, the loop then stores the next filename in `filename` and executes the same commands on the next file. In the long run, it's best to use a name that will help point out a variable's function, so your future self will understand what you are thinking now.
  
-Essentially, **the number of loops == the number of items in the list**, in our case that is 6 times since we have 6 files in `~/ngs_course/unix_lesson/raw_fastq` that end in `.fq`. This is done by changing the value of the `filename` variable 6 times. 
+Essentially, **the number of loops == the number of items in the list**, in our case that is 6 times since we have 6 files in `~/ngs_course/dnaseq/data/untrimmed_fastq/` that end in `.fastq.gz`. This is done by changing the value of the `filename` variable 6 times. 
 Pretty simple and cool, huh?
 
 ## Automating with Scripts
@@ -165,7 +165,7 @@ We always want to start our scripts with a shebang line:
 
 This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
 
-After the shebang line, we enter the commands we want to execute. First we want to move into our `raw_fastq` directory:
+After the shebang line, we enter the commands we want to execute. First we want to move into our `~/ngs_course/dnaseq/data/untrimmed_fastq/` directory:
 
 ```
 # enter directory with raw FASTQs
@@ -231,7 +231,7 @@ To run this script, we simply enter the following command:
 $ sh generate_bad_reads_summary.sh
 ```
 
-To keep your data organized, let's move all of the bad read files and script out of our `raw_fastq` directory into the `other` directory
+To keep your data organized, let's move all of the bad read files and script out of our `untrimmed_fastq` directory into the `other` directory
 
 `$ mkdir ~/ngs_course/dnaseq/other #in case you have not created this directory yet`
 
