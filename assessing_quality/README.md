@@ -46,9 +46,9 @@ Change directories to `untrimmed_fastq`.
 `$ cd ~/ngs_course/dnaseq/data/untrimmed_fastq`  
 
 
-FastQC will accept multiple file names as input, so we can use the `*.fq` wildcard.
+FastQC will accept multiple file names as input, so we can use the `*.fastq.gz` wildcard.
 
-`$ fastqc *.fq`
+`$ fastqc *.fastq.gz`
 
 *Did you notice how each file was processed serially? How do we speed this up?*
 
@@ -58,7 +58,7 @@ Let's use the multi-threading functionality of FastQC to run 4 jobs at once (you
 
 $ cd ~/ngs_course/dnaseq/data/untrimmed_fastq
 
-$ fastqc -t 4 *.fq  #note the extra parameter we specified for 4 threads
+$ fastqc -t 4 *.fastq.gz  #note the extra parameter we specified for 4 threads
 ```
 
 How did I know about the -t argument for FastQC?
@@ -119,7 +119,7 @@ The **"Overrepresented sequences"** table displays the sequences (at least 20 bp
 
 ![FastQC_contam](FastQC_contam.png)
 
-We will go over the remaining plots in class. Remember, our report only represents a subset of reads (chromosome 1) for `Mov10_oe_1.subset.fq`, which can skew the QC results. We encourage you to look at the [full set of reads](https://dl.dropboxusercontent.com/u/74036176/Mov10oe_1-fastqc_report.html) and note how the QC results differ when using the entire dataset.
+We will go over the remaining plots in class. Remember, our report only represents a subset of reads (chromosome 2) for `WES01_chr22m_R1.fastq.gz`, which can skew the QC results. We encourage you to look at the [full set of reads](https://dl.dropboxusercontent.com/u/74036176/Mov10oe_1-fastqc_report.html) and note how the QC results differ when using the entire dataset.
 
 #### .zip files   
 
