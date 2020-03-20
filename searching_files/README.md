@@ -76,7 +76,7 @@ The redirection command for putting something in a file is `>`
 Let's try it out and put all the sequences that contain 'NNNNNN'
 from all the files in to another file called `bad_reads.txt`.
 
-`$ grep -B1 -A2 NNNNNN Mov10_oe_1.subset.fq > bad_reads.txt`
+`$ grep -B1 -A2 NNNNNN WES01_chr22m_R1.fastq > bad_reads.txt`
 
 `$ ls -l`
 
