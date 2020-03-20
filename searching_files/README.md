@@ -85,12 +85,14 @@ happened. But type `ls`. You should have a new file called `bad_reads.txt`. Take
 a look at it and see if it has what you think it should.
 
 If we use '>>', it will append to rather than overwrite a file.  This can be useful for saving more than one search, for example:
-    
-`$ grep -B1 -A2 NNNNNN WES01_chr22m_R1.fastq >> bad_reads.txt`
+ 
+ `zcat WES01_chr22m_R2.fastq.gz > WES01_chr22m_R2.fastq `
+ 
+`$ grep -B1 -A2 NNNNNN WES01_chr22m_R2.fastq >> bad_reads.txt`
 
 `$ ls -l`
 
-Since our `bad_reads.txt` file isn't a raw_fastq file, we should move it to a different location within our directory. We decide to create a new folder called `other`, and move the `bad_reads.txt` to this `other` folder using the command `mv`. 
+Since our `bad_reads.txt` file isn't a untrimmed_fastq file, we should move it to a different location within our directory. We decide to create a new folder called `other`, and move the `bad_reads.txt` to this `other` folder using the command `mv`. 
 
 `$ mkdir ../other/`
 
