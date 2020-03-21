@@ -108,20 +108,15 @@ After the job finishes, you should see the *Trimmomatic* output in the terminal 
 
 ```
 TrimmomaticPE: Started with arguments:
- -threads 4 -phred33 WES01_chr22m_R1.fastq.gz WES01_chr22m_R2.fastq.gz -baseout ../trimmed_fastq/WES01_chr22m_trimmed_R ILLUMINACLIP:home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/TruSeq3-PE.fa:2:30:10 TRAILING:25 MINLEN:35
-Using templated Output files: ../trimmed_fastq/WES01_chr22m_trimmed_R_1P ../trimmed_fastq/WES01_chr22m_trimmed_R_1U ../trimmed_fastq/WES01_chr22m_trimmed_R_2P ../trimmed_fastq/WES01_chr22m_trimmed_R_2U
-java.io.FileNotFoundException: /home/ubuntu/ngs_course/dnaseq/data/untrimmed_fastq/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/TruSeq3-PE.fa (No such file or directory)
-	at java.base/java.io.FileInputStream.open0(Native Method)
-	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
-	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
-	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
-	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
-	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
-	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
-	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
-Input Read Pairs: 505987 Both Surviving: 490813 (97.00%) Forward Only Surviving: 13885 (2.74%) Reverse Only Surviving: 950 (0.19%) Dropped: 339 (0.07%)
+ -threads 4 -phred33 /home/ubuntu/ngs_course/dnaseq/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz /home/ubuntu/ngs_course/dnaseq/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz -baseout /home/ubuntu/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_trimmed_R ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 TRAILING:25 MINLEN:50
+Using templated Output files: /home/ubuntu/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_trimmed_R_1P /home/ubuntu/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_trimmed_R_1U /home/ubuntu/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_trimmed_R_2P /home/ubuntu/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_trimmed_R_2U
+Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 505987 Both Surviving: 432839 (85.54%) Forward Only Surviving: 67687 (13.38%) Reverse Only Surviving: 2163 (0.43%) Dropped: 3298 (0.65%)
 TrimmomaticPE: Completed successfully
 ```
 
