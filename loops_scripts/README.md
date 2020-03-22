@@ -80,7 +80,7 @@ Once you press return, you should be back at the command prompt. Let's check wha
 	$ echo $file
 
 
-Let's try another command using the variable that we have created. In the last lesson, we introduced the `wc -l` command which allows us to count the number of lines in a file. We can count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable, but first move into the `raw_fastq` directory:
+Let's try another command using the variable that we have created. In the last lesson, we introduced the `wc -l` command which allows us to count the number of lines in a file. We can count the number of lines in `WES01_chr22m_R1.fastq.gz` by referencing the `file` variable, but first move into the `raw_fastq` directory:
 
 	$ cd ~/ngs_course/dnaseq/data/untrimmed_fastq
 	$ wc -l $file
