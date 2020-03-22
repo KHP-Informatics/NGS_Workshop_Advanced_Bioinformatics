@@ -252,7 +252,7 @@ trimmomatic PE  \
 Now let's run the script:
 
 ```
-$ bash test_pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
+$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 ```
 Any errors or standard output from the commands run within the script will be directed onto the terminal. If not error is produced and the terminal schows somethig like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
 
@@ -282,16 +282,50 @@ Now that we have generated a pipeline.sh script that can perform data trimming o
 
 ```
 
-fastqc -t 4 /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P \
-	/home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2P
+fastqc -t 4 /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data_1P \
+	/home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data_2P
 	
-mkdir ~/ngs_course/dnaseq_pipeline/results/fastqc_untrimmed_reads
+mkdir ~/ngs_course/dnaseq_pipeline/results/fastqc_trimmed_reads
 
+mv ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/*fastqc* ~/ngs_course/dnaseq_pipeline/results/fastqc_trimmed_reads/
 
+```
 
+Now run pipeline.sh and see if it generates the the FastQC reports in the "fastqc_trimmed_reads" directory. Please note that everytime you run pipeline.sh the script will run all its commands and this can be quite timeconsuming and risky in case it overwrites somethin important. For the aim of this practical excercise this is not important but please keep this in mind when you will make another automated pipeline in the future.
 
+```
+$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 
+$ cd ~/ngs_course/dnaseq_pipeline/results/fastqc_trimmed_reads/
 
+$ ls
+trimmed_data_1P_fastqc.html  trimmed_data_1P_fastqc.zip  trimmed_data_2P_fastqc.html  trimmed_data_2P_fastqc.zip
+```
+
+## Final excercise
+
+Now that you know how to generate a bash script to run a sequence of commands, please complete the pipeline.sh with all the steps of a standard DNA-seq analysis pipeline by adding the commands lines from the other workshops to pipeline.sh and run the whole analysis pipeline. The script should be ale to perform the following steps automatically by runngin only one command:
+
+```
+bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
+```
+
+- Trimming
+- QC (fastQC)
+- Alignement
+- Duplicate marking
+- Post-alignemtn read filtering
+- Variant Calling
+- Variant filtering
+- Variant annotation.
+
+Fos inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf)
+
+##IMPORTANT: 
+### 1) please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an approriate environment in the project set up phase.
+### 2) Some of the steps of the pipeline might take a little while to run, e.g. reference indexing. Please take this into account when you test it and consider creating the index beforehead as a project set up step and not as a step in the pipeline.
+### 3) please comment your script extensively by describing what each command does (you can add comments to a script by [putting the # before the comment](https://www.tutorialkart.com/bash-shell-scripting/bash-comments/) to make it clear to undertand.
+### 4) upload your final script to your Github repository, the one you have generated on the first day [Link](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/basic-git-bash-task.pdf)
 
 
 
