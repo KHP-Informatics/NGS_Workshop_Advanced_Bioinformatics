@@ -37,7 +37,7 @@ dnaseq
 	│   │   ├── etc     
 	│   └── aligned_data
 	│       └── WES01_chr22m_sorted_filtered.bam
-  │       └── etc
+	│       └── etc
 	├── meta
 	├── results
 	└── logs
