@@ -1,12 +1,10 @@
-# Advanced Bioinformatics module workshop
-
-### NGS Variant Annotation
 ---
 title: "How to set up a bioinformatics project"
 author: "Alfredo Iacoangeli"
 date: "16/03/2020"
 ---
 
+### NGS Variant Annotation
 
 
 ## Variant Annotation and Prioritisation
