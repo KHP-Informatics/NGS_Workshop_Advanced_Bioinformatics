@@ -8,7 +8,6 @@ IMPORTANT: the paths to files and directories in this workshop are only examples
 
 ## Learning Objectives:
 * Learn how to automate your pipeline using a bash script 
-* Use a `for loop` to run the pipeline on multiple files
 
 
 Suppose you want to run a few different commands in succession – this is called “automating tasks”. See http://xkcd.com/1205/
