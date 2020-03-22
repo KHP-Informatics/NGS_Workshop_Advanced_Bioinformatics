@@ -41,7 +41,7 @@ dnaseq_pipeline/
 Let's create a directory for our project by changing into `dnaseq` and then using `mkdir` to create the four directories.
 
 ```
-$ cd ngs_course/dnaseq_pipeline
+$ cd ~/ngs_course/dnaseq_pipeline
 
 $ mkdir data meta results logs scripts
 ``` 
@@ -71,20 +71,20 @@ $ mkdir trimmed_fastq
 $ mkdir untrimmed_fastq
 ```
     
-The fastq data we will be working with need to be copied from dnaseq first (this include the sequencing data as well as the bed file and the reference genome:
+The fastq data we will be working with need to be copied from the dnaseq project first (this include the sequencing data as well as the bed file and the reference genome:
 
-#### IMPORTANT: please keep in mind that the total available storage on your OpenStack instance is 40 Gigabytes. You can check the total amount of storage you have used by running the command `sudo du -sh /`. If you realize that you do not have enough space to copy the data in the new project, consider moving the data instead using the `mv` command instead of `cp`
+#### IMPORTANT: please keep in mind that the total available storage on your OpenStack instance is 40 Gigabytes. You can check the total amount of storage you have used by running the command `sudo du -sh /`. If you realize that you do not have enough space to copy the data in the new project folder and repeat the experiment, consider moving the data using the `mv` command instead of `cp`
 
 ```
 $ cp ~/ngs_course/dnaseq/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq
 
-$ cp ~/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_R2.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq
+$ cp ~/ngs_course/dnaseq/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq
 
 $ cp ~/ngs_course/dnaseq/data/chr22.genes.hg19.bed ~/ngs_course/dnaseq_pipeline/data/
 
-$ mkdir ~/ngs_course/dnaseq/data/dnaseq_pipeline/reference
+$ mkdir ~/ngs_course/dnaseq_pipeline/data/reference
 
-$ cp ~/ngs_course/dnaseq/data/reference/hg19.fa.gz ~/ngs_course/dnaseq/data/dnaseq_pipeline/reference/
+$ cp ~/ngs_course/dnaseq/data/reference/hg19.fa.gz ~/ngs_course/dnaseq_pipeline/data/reference/
 ```
 
 ### Create an example bash script
@@ -124,7 +124,7 @@ echo
 done
 ```
 
-Save the file and exit vim. Now let's run the new script we have created. To run a shell script you usually use the bash or sh command.
+Save the file and exit vim. Now let's run the script we have created. To run a shell script you usually use the bash or sh command.
 
 
 
@@ -140,7 +140,7 @@ fastqc_summaries.txt
 The following is the content of meta
 
 The following is the content of results
-fastqc_untrimmed_reads something_else 
+fastqc_untrimmed_reads		     WES01_chr22m_filtered_chr22.avinputls	     WES01_chr22m_filtered_chr22.vcf.gz      WES01_chr22m_filtered.vcf	WES01_chr22m.vcf.gz.tbi WES01_chr22m_filtered_chr22.avinput WES01_chr22m_filtered_chr22.hg19_multianno.csv  WES01_chr22m_filtered_chr22.vcf.gz.tbi  WES01_chr22m.vcf.gz
 ```
 ## Bash variables (repetition from the loops_scripts workshop) 
 A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
@@ -244,7 +244,7 @@ trimmomatic PE  \
   -threads 4 \
   -phred33 \
   $1 $2 \
-  -baseout ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data \
+  -baseout ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data \
   ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 \
   TRAILING:25 MINLEN:50
 ```
@@ -253,12 +253,12 @@ Now let's run the script:
 ```
 $ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 ```
-Any errors or standard output from the commands run within the script will be directed onto the terminal. If not error is produced and the terminal shows something like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
+Any errors or standard output from the commands run within the script will be directed onto the terminal. If no error is produced and the terminal shows something like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
 
 ```
 trimmomaticPE: Started with arguments:
- -threads 4 -phred33 WES01_chr22m_R1.fastq WES01_chr22m_R2.fastq -baseout /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 TRAILING:25 MINLEN:50
-Using templated Output files: /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1U /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2U
+ -threads 4 -phred33 WES01_chr22m_R1.fastq WES01_chr22m_R2.fastq -baseout /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 TRAILING:25 MINLEN:50
+Using templated Output files: /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data_1U /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data_2P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_data_2U
 Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
 Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
 Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
@@ -303,7 +303,7 @@ trimmed_data_1P_fastqc.html  trimmed_data_1P_fastqc.zip  trimmed_data_2P_fastqc.
 
 ## Final excercise
 
-Now that you know how to generate a bash script to run a sequence of commands, please complete the pipeline.sh with all the steps of a standard DNA-seq analysis pipeline by adding the commands lines from the other workshops to pipeline.sh and run the whole analysis pipeline. The script should be able to perform the following steps automatically by running only one command:
+1. Now that you know how to make a bash script to run a sequence of commands, please complete the pipeline.sh with all the steps of a standard DNA-seq analysis pipeline by adding the commands lines from the other workshops to pipeline.sh and run the whole analysis pipeline. The script should be able to perform the following steps automatically by running only one command:
 
 ```
 bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
@@ -319,6 +319,8 @@ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_
 - Variant annotation.
 
 For inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf) (please note that Picard and Trimmomatic command lines in the slides are different from what you are using, do not copy and paste)
+
+2. Take a moment to create a README for the `dnaseq_pipeline` folder (hint: use `vim`, or `nano` or any text editor of your choice to create the file). Give a short description of the project and brief descriptions of the types of file you would be storing within each of the sub-directories. 
 
 ## IMPORTANT: 
 ### 1) Please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an appropriate environment in the project set up phase.
