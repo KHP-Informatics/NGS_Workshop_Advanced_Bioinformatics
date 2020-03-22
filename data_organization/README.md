@@ -189,6 +189,7 @@ $ conda install picard
 $ conda install bedtools
 $ conda install trimmomatic
 $ conda install fastqc
+$ conda install vcflib
 $ conda install any_other_tool_you_need
 
 ```
