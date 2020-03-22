@@ -2,9 +2,10 @@
 
 ### NGS Variant Annotation
 ---
-* Date: 16/03/2020
-* Place: KCL
-
+title: "How to set up a bioinformatics project"
+author: "Alfredo Iacoangeli"
+date: "16/03/2020"
+---
 
 
 
