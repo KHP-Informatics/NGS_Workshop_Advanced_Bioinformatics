@@ -105,7 +105,7 @@ $ for dirname in $(ls ~/ngs_course/dnaseq/)
 ```
 This commands list all the files contained in the dnaseq folders.
 
-Now create test.sh and add the commands to the file then run it and see the poutput:
+Now create test.sh and add the commands to the file then run it and see the output:
 
 ```
 $ cd ~/ngs_course/dnaseq_pipeline/scripts
@@ -157,7 +157,7 @@ Let's start with a simple variable that has a single number stored in it:
 	$ echo num
 
 
-What do you see in the terminal? The `echo` utility takes what arguments you provide and prints to terminal. In this case it interpreted `num` as a a character string and simply printed it back to us. This is because **when using the variable as an argument to the `echo` command, we explicitly use a `$` in front of it**:
+What do you see in the terminal? The `echo` utility takes what arguments you provide and prints to terminal. In this case it interpreted `num` as a character string and simply printed it back to us. This is because **when using the variable as an argument to the `echo` command, we explicitly use a `$` in front of it**:
 
 	$ echo $num
 
@@ -228,9 +228,9 @@ $ bash test_1.sh something "something else"
 
 Please note that we used the `" "` for the second argument because without them bash would have read "something" as the second argument and else as the third.
 
-## A script ro run Trimmomatic on the sequencing data
+## A script to run Trimmomatic on the sequencing data
 
-Now that we know know how to wirte simple bash scripts and run Trimmomatic on PE seq data we can write a script that takes as argument the sequencing data file names and performs data trimming. We are going to create the file pipeline.sh and add the commands lines to perform data trimming as we did in the ["trimming"](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/tree/master/trimming) workshop:
+Now that we know  how to write simple bash scripts and run Trimmomatic on PE seq data we can write a script that takes as argument the sequencing data file names and performs data trimming. We are going to create the file pipeline.sh and add the commands lines to perform data trimming as we did in the ["trimming"](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/tree/master/trimming) workshop:
 
 ```
 $ vim pipeline.sh
@@ -254,10 +254,10 @@ Now let's run the script:
 ```
 $ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 ```
-Any errors or standard output from the commands run within the script will be directed onto the terminal. If not error is produced and the terminal schows somethig like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
+Any errors or standard output from the commands run within the script will be directed onto the terminal. If not error is produced and the terminal shows something like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
 
 ```
-rimmomaticPE: Started with arguments:
+trimmomaticPE: Started with arguments:
  -threads 4 -phred33 WES01_chr22m_R1.fastq WES01_chr22m_R2.fastq -baseout /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 TRAILING:25 MINLEN:50
 Using templated Output files: /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1U /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2U
 Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
@@ -291,7 +291,7 @@ mv ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/*fastqc* ~/ngs_course/dnaseq_
 
 ```
 
-Now run pipeline.sh and see if it generates the the FastQC reports in the "fastqc_trimmed_reads" directory. Please note that everytime you run pipeline.sh the script will run all its commands and this can be quite timeconsuming and risky in case it overwrites somethin important. For the aim of this practical excercise this is not important but please keep this in mind when you will make another automated pipeline in the future.
+Now run pipeline.sh and see if it generates the FastQC reports in the "fastqc_trimmed_reads" directory. Please note that every time you run pipeline.sh the script will run all its commands and this can be quite time-consuming and risky in case it overwrites something important. For the aim of this practical exercise this is not important but please keep this in mind when you will make another automated pipeline in the future.
 
 ```
 $ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
@@ -304,7 +304,7 @@ trimmed_data_1P_fastqc.html  trimmed_data_1P_fastqc.zip  trimmed_data_2P_fastqc.
 
 ## Final excercise
 
-Now that you know how to generate a bash script to run a sequence of commands, please complete the pipeline.sh with all the steps of a standard DNA-seq analysis pipeline by adding the commands lines from the other workshops to pipeline.sh and run the whole analysis pipeline. The script should be ale to perform the following steps automatically by runngin only one command:
+Now that you know how to generate a bash script to run a sequence of commands, please complete the pipeline.sh with all the steps of a standard DNA-seq analysis pipeline by adding the commands lines from the other workshops to pipeline.sh and run the whole analysis pipeline. The script should be able to perform the following steps automatically by running only one command:
 
 ```
 bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
@@ -319,13 +319,14 @@ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_
 - Variant filtering
 - Variant annotation.
 
-Fos inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf) (please note that Picard and Trimmomatic command lines in the slides are different from what you are using, do not copy and paste)
+For inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf) (please note that Picard and Trimmomatic command lines in the slides are different from what you are using, do not copy and paste)
 
 ## IMPORTANT: 
-### 1) please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an approriate environment in the project set up phase.
-### 2) Some of the steps of the pipeline might take a little while to run, e.g. reference indexing. Please take this into account when you test it and consider creating the index beforehead as a project set up step and not as a step in the pipeline.
-### 3) please comment your script extensively by describing what each command does (you can add comments to a script by [putting the # before the comment](https://www.tutorialkart.com/bash-shell-scripting/bash-comments/) to make it clear to undertand.
-### 4) upload your final script to your Github repository, the one you have generated on the first day [Link](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/basic-git-bash-task.pdf)
+### 1) Please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an appropriate environment in the project set up phase.
+### 2) Some of the steps of the pipeline might take a little while to run, e.g. reference indexing. Please take this into account when you test it and consider creating the index beforehand as a project set up step and not as a step in the pipeline.
+### 3) Please comment your script extensively by describing what each command does (you can add comments to a script by [putting the # before the comment](https://www.tutorialkart.com/bash-shell-scripting/bash-comments/) to make it clear to understand
+### 4) Check that the results are the same as the ones you generated in the dnaseq project
+### 5) Upload your final script to your Github repository, the one you have generated on the first day [Link](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/basic-git-bash-task.pdf)
 
 
 
