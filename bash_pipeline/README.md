@@ -68,6 +68,8 @@ Now we will create a subdirectory to to store the data we want to process. We wi
 $ cd ~/ngs_course/dnaseq_pipeline/data
 
 $ mkdir trimmed_fastq
+
+$ mkdir untrimmed_fastq
 ```
     
 The fastq data we will be working with need to be copied from dnaseq first (this include the sequencing data as well as the bed file and the reference genome:
@@ -75,9 +77,9 @@ The fastq data we will be working with need to be copied from dnaseq first (this
 #### IMPORTANT: please keep in mind that the total available storage on your OpenStack instance is 40 Gigabytes. You can check the total amount of storage you have used by running the command `sudo du -sh /`. If you realize that you do not have enough space to copy the data in the new project, consider moving the data instead using the `mv` command instead of `cp`
 
 ```
-$ cp ~/ngs_course/dnaseq/data/trimmed_fastq/TRIMMED_DATA_FILENAME_R1 ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq
+$ cp ~/ngs_course/dnaseq/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq
 
-$ cp ~/ngs_course/dnaseq/data/trimmed_fastq/TRIMMED_DATA_FILENAME_R2 ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq
+$ cp ~/ngs_course/dnaseq/data/trimmed_fastq/WES01_chr22m_R2.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq
 
 $ cp ~/ngs_course/dnaseq/data/chr22.genes.hg19.bed ~/ngs_course/dnaseq_pipeline/data/
 
@@ -141,7 +143,7 @@ The following is the content of meta
 The following is the content of results
 fastqc_untrimmed_reads something_else 
 ```
-## Bash variables
+## Bash variables (repetition from the loops_scripts workshop) 
 A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
 
 Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
@@ -170,7 +172,7 @@ Once you press return, you should be back at the command prompt. Let's check wha
 	$ echo $file
 
 
-Let's try another command using the variable that we have created. In the last lesson, we introduced the `wc -l` command which allows us to count the number of lines in a file. We can count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable, but first move into the `raw_fastq` directory:
+Let's try another command using the variable that we have created. In the last lesson, we introduced the `wc -l` command which allows us to count the number of lines in a file. We can count the number of lines in `WES01_chr22m_R1.fastq.gz` by referencing the `file` variable, but first move into the `raw_fastq` directory:
 
 	$ cd ~/ngs_course/dnaseq/data/untrimmed_fastq
 	$ wc -l $file
@@ -196,3 +198,102 @@ Let's try the `wc -l` command again, but this time using our new variable `filen
 	$ wc -l $filenames
 	
 What just happened? Because our variable contains multiple values, the shell runs the command on each value stored in `filenames` and prints the results to screen. 
+
+### Special Variable Types: Positional parameters
+
+In any bash script the variables $0, $1, $2, $3, etc are the arguments passed to the script from the command line. $0 is the name of the script itself, $1 is the first argument, $2 the second, $3 the third, and so forth. [2] After $9, the arguments must be enclosed in brackets, for example, ${10}, ${11}, ${12}. See following example:
+
+Please open a new file with vim, write the following lines into it, save it and exit:
+
+```
+$ cd ~/ngs_course/dnaseq_pipeline/scripts
+$ vim test_1.sh
+```
+Write the following lines into:
+
+```
+#!/bin/bash
+
+echo the name of the script is $0
+echo 
+echo the first argument was $1 and the second $2
+
+```
+
+Now run the script with your own arguments:
+
+```
+$ bash test_1.sh something "something else" 
+```
+
+Please note that we used the `" "` for the second argument because without them bash would have read "something" as the second argument and else as the third.
+
+## A script ro run Trimmomatic on the sequencing data
+
+Now that we know know how to wirte simple bash scripts and run Trimmomatic on PE seq data we can write a script that takes as argument the sequencing data file names and performs data trimming. We are going to create the file pipeline.sh and add the commands lines to perform data trimming as we did in the ["trimming"](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/tree/master/trimming) workshop:
+
+```
+$ vim pipeline.sh
+```
+
+Let's add the following lines to the script (please note that you need to modify the command line according to you directory tree):
+
+```
+#!/bin/bash
+
+trimmomatic PE  \
+  -threads 4 \
+  -phred33 \
+  $1 $2 \
+  -baseout ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data \
+  ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 \
+  TRAILING:25 MINLEN:50
+```
+Now let's run the script:
+
+```
+$ bash test_pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
+```
+Any errors or standard output from the commands run within the script will be directed onto the terminal. If not error is produced and the terminal schows somethig like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
+
+```
+rimmomaticPE: Started with arguments:
+ -threads 4 -phred33 WES01_chr22m_R1.fastq WES01_chr22m_R2.fastq -baseout /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data ILLUMINACLIP:/home/ubuntu/anaconda3/pkgs/trimmomatic-0.39-1/share/trimmomatic-0.39-1/adapters/NexteraPE-PE.fa:2:30:10 TRAILING:25 MINLEN:50
+Using templated Output files: /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1U /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2P /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2U
+Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 505987 Both Surviving: 432839 (85.54%) Forward Only Surviving: 67687 (13.38%) Reverse Only Surviving: 2163 (0.43%) Dropped: 3298 (0.65%)
+TrimmomaticPE: Completed successfully
+
+$ cd /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/
+
+$ ls
+
+trimmed_data_1P  trimmed_data_1U  trimmed_data_2P  trimmed_data_2U
+```
+
+## Add the FastQC analysis to your script
+
+Now that we have generated a pipeline.sh script that can perform data trimming on any input fastq files, we want the script to run FastQC on the generated trimmed data. Open pipeline.sh with vim and add the following command line:
+
+```
+
+fastqc -t 4 /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_1P \
+	/home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/trimmed_data_2P
+	
+mkdir ~/ngs_course/dnaseq_pipeline/results/fastqc_untrimmed_reads
+
+
+
+
+
+
+
+
+
+
+
