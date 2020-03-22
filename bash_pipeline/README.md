@@ -321,7 +321,7 @@ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_
 
 Fos inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf)
 
-##IMPORTANT: 
+## IMPORTANT: 
 ### 1) please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an approriate environment in the project set up phase.
 ### 2) Some of the steps of the pipeline might take a little while to run, e.g. reference indexing. Please take this into account when you test it and consider creating the index beforehead as a project set up step and not as a step in the pipeline.
 ### 3) please comment your script extensively by describing what each command does (you can add comments to a script by [putting the # before the comment](https://www.tutorialkart.com/bash-shell-scripting/bash-comments/) to make it clear to undertand.
