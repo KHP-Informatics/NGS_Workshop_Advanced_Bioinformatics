@@ -251,7 +251,8 @@ trimmomatic PE  \
 Now let's run the script:
 
 ```
-$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
+$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 		
+	~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 ```
 Any errors or standard output from the commands run within the script will be directed onto the terminal. If no error is produced and the terminal shows something like the following, please go to your "trimmed_fastq" directory and see that the trimmed data was effectively generated.
 
@@ -293,7 +294,8 @@ mv ~/ngs_course/dnaseq_pipeline/data/trimmed_fastq/*fastqc* ~/ngs_course/dnaseq_
 Now run pipeline.sh and see if it generates the FastQC reports in the "fastqc_trimmed_reads" directory. Please note that every time you run pipeline.sh the script will run all its commands and this can be quite time-consuming and risky in case it overwrites something important. For the aim of this practical exercise this is not important but please keep this in mind when you will make another automated pipeline in the future.
 
 ```
-$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \ 				~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
+$ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R1.fastq.gz \
+	~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_R2.fastq.gz
 
 $ cd ~/ngs_course/dnaseq_pipeline/results/fastqc_trimmed_reads/
 
