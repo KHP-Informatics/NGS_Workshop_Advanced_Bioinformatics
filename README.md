@@ -18,4 +18,4 @@ Please do the practical modules in the following order:
 
 8-annotation
 
-9-bash pipeline (available from Monday the 23rd)
+9-bash pipeline 
