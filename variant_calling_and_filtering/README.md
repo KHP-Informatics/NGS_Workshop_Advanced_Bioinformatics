@@ -54,9 +54,9 @@ $ samtools faidx ~/ngs_course/dnaseq/data/reference/hg19.fa
 
 $ freebayes --bam ~/ngs_course/dnaseq/data/aligned_data/WES01_chr22m_sorted_filtered.bam --fasta-reference ~/ngs_course/dnaseq/data/reference/hg19.fa --vcf ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf
 
-$ bgzip ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf
+$ bgzip ~/ngs_course/dnaseq/results/WES01_chr22m.vcf
 
-$ tabix -p vcf ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz
+$ tabix -p vcf ~/ngs_course/dnaseq/results/WES01_chr22m.vcf.gz
 
 ```
 
@@ -90,22 +90,25 @@ SAF > 0 & SAR > 0 : reads on both strands
 RPR > 1 & RPL > 1 : at least two reads “balanced” to each side of the site
 
 ```
-$ vcffilter -f "QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1" ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf.gz > ~/ngs_course/dnaseq/data/results/WES01_chr22m_filtered.vcf
+$ conda install vcflib #if you did not install vcflib before. vcffilter is part of the vcflib suite
+
+$ vcffilter -f "QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1" \ 			
+	~/ngs_course/dnaseq/results/WES01_chr22m.vcf.gz > ~/ngs_course/dnaseq/results/WES01_chr22m_filtered.vcf
 ```
 
 The bed file chr22.genes.b37.bed describes the exome sequences and genes that have been targeted in your trial data. Using bedtools we can filter the vcf file for the regions in chr22.genes.b37.bed: 
 
 ```
 
-$ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed  > ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+$ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed \ 		> ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf
 
-$ bgzip ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf
+$ bgzip ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf
 
-$ tabix -p vcf ~/ngs_course/dnaseq/data/results/results/WES01_chr22m_filtered_chr22.vcf.gz
+$ tabix -p vcf ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf.gz
 
 ```
 
 
 ### Exercise
 
-Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
+Take a moment to update the README for the dnaseq folder (hint: use vim, or nano or any text editor of your choice to create/edit the file). Give a short update of the project and brief descriptions of the types of file you have generated within each of the sub-directories. Please take note of the current size of the project. The total storage available on your virtual machine if 40Gigabytes
