@@ -46,7 +46,6 @@ $ cd annovar
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar knownGene humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ensGene humandb/
-$ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp150 humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20180603 humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb/
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp31a_interpro humandb/
@@ -67,26 +66,10 @@ NOTICE: Finished writing N SNP genotypes (N transitions and N transversions) and
 
 * csv output
 ```bash
-$ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19 -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f -otherinfo -nastring . -csvout
+$ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19  \                   -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove   \                                                       -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f -otherinfo -nastring . -csvout
 ```
 
 The output will be in csv format, please download it via FileZilla and open it with Office Excel or any other speadsheet software. 
-
-### Easy Run Annovar talbe function
-```bash
-$ perl annovar.pl -i demo_sample.avinput -r hg19 -o demo_sample
-```
-
-* **Gene-based (g)**
-    * refGene
-    * ensGene
-
-* **Filter-based (f)**
-    * avsnp150
-    * 1000g2015aug_all
-    * clinvar_20180603
-    * exac03
-    * dbnsfp31a_interpro
 
 
 ## Exercise
@@ -103,6 +86,3 @@ Take a moment to update the README for the dnaseq folder (hint: use vim, or nano
     * [NAA10 mutation causing a novel intellectual disability syndrome with Long QT due to N-terminal acetyltransferase impairment](http://www.nature.com/articles/srep16022)
     * [OMIM - Ogden Syndrome](http://www.omim.org/entry/300855)
 
-
-* All Information 2018 Genomic Epidemiology Workshop Use
-* Edit by [Philippe](http://github.com/geniusphil)
