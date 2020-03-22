@@ -319,7 +319,7 @@ bash pipeline.sh ~/ngs_course/dnaseq_pipeline/data/untrimmed_fastq/WES01_chr22m_
 - Variant filtering
 - Variant annotation.
 
-Fos inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf)
+Fos inspiration please see [the last slides of the module introduction lecture](https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/blob/master/bash_pipeline/exsample_bash_script.pdf) (please note that Picard and Trimmomatic command lines in the slides are different from what you are using, do not copy and paste)
 
 ## IMPORTANT: 
 ### 1) please not that the pipeline.sh does not need to install the tools or download the reference or databases in this occasion. We assume that you already set up an approriate environment in the project set up phase.
