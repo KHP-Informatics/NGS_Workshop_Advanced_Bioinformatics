@@ -153,9 +153,9 @@ chr22   17103730        17103787        psiTPTE22-chr22-17103731-17103787
 
 The columns in the **BED file contain the genomic coordinates of a genomic region  (in our case exons) and then an optional number of optional tab-delimited fields. In our case the optional field contains the gene name and the exon genomic coordinates in a dash delimited format **. Note that sometimes an exon can be associated with multiple different genes and/or transcripts. 
 
-Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many total exons are present on chromosome 1 using `chr1-hg19_genes.gtf`?**
+Now that we know what type of information is inside of our gtf file, let's explore our commands to answer a simple question about our data: **how many total exons are present on chromosome 22 using `chr22.genes.hg19.bed`?**
 
-To determine the number of total exons on chromosome 1, we are going to perform a series of steps:
+To determine the number of total exons on chromosome 22, we are going to perform a series of steps:
 	
 	1. Subset the dataset to only include the genomic location information
 	2. Extract only the genomic coordinates of RABL2B exons
