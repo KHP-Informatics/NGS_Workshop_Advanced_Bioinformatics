@@ -52,7 +52,7 @@ $ zcat ~/ngs_course/dnaseq/data/reference/hg19.fa.gz > ~/ngs_course/dnaseq/data/
 
 $ samtools faidx ~/ngs_course/dnaseq/data/reference/hg19.fa
 
-$ freebayes --bam ~/ngs_course/dnaseq/data/aligned_data/WES01_chr22m_sorted_filtered.bam --fasta-reference ~/ngs_course/dnaseq/data/reference/hg19.fa --vcf ~/ngs_course/dnaseq/data/results/WES01_chr22m.vcf
+$ freebayes --bam ~/ngs_course/dnaseq/data/aligned_data/WES01_chr22m_sorted_filtered.bam --fasta-reference ~/ngs_course/dnaseq/data/reference/hg19.fa --vcf ~/ngs_course/dnaseq/results/WES01_chr22m.vcf
 
 $ bgzip ~/ngs_course/dnaseq/results/WES01_chr22m.vcf
 
