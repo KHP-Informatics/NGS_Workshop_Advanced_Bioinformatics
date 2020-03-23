@@ -269,7 +269,7 @@ ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only 
 Input Read Pairs: 505987 Both Surviving: 432839 (85.54%) Forward Only Surviving: 67687 (13.38%) Reverse Only Surviving: 2163 (0.43%) Dropped: 3298 (0.65%)
 TrimmomaticPE: Completed successfully
 
-$ cd /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/trimmed_fastq/
+$ cd /home/ubuntu/ngs_course/dnaseq_pipeline/data/trimmed_fastq/
 
 $ ls
 
