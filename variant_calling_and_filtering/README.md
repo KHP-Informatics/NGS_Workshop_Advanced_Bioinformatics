@@ -100,7 +100,8 @@ The bed file chr22.genes.b37.bed describes the exome sequences and genes that ha
 
 ```
 
-$ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed \ 		> ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf
+$ bedtools intersect -header -wa -a ~/ngs_course/dnaseq/results/WES01_chr22m_filtered.vcf -b ../chr22.genes.hg19.bed \
+ 	> ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf
 
 $ bgzip ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.vcf
 
