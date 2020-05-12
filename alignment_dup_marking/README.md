@@ -201,7 +201,7 @@ Now we need to convert the sam file into bam format, sort it and generate an ind
 ```
 $ samtools view -h -b WES01_chr22m.sam > WES01_chr22m.bam #IMPORTANT: depending on your samtools version, you might need to add the -S option to make samtools accept the sam input file 
 
-$ samtools sort WES01_chr22m.bam > WES01_chr22m_sorted.bam
+$ samtools sort WES01_chr22m.bam > WES01_chr22m_sorted.bam #IMPORTANT: depending on your samtools version, you might need to add the -o option to make samtools direct the output to stdout
 
 $ samtools index WES01_chr22m_sorted.bam #This will generate a .bai index file
 
