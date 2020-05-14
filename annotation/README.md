@@ -66,7 +66,9 @@ NOTICE: Finished writing N SNP genotypes (N transitions and N transversions) and
 
 * csv output
 ```bash
-$ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19  \                   -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove   \                                                       -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro, -operation g,g,f,f,f -otherinfo -nastring . -csvout
+$ ./table_annovar.pl ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22.avinput humandb/ -buildver hg19  \ 
+   -out ~/ngs_course/dnaseq/results/WES01_chr22m_filtered_chr22 -remove   \ 
+      -protocol refGene,ensGene,clinvar_20180603,exac03,dbnsfp31a_interpro -operation g,g,f,f,f -otherinfo -nastring . -csvout
 ```
 
 The output will be in csv format, please download it via FileZilla and open it with Office Excel or any other speadsheet software. 
