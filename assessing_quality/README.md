@@ -1,7 +1,7 @@
 ---
 title: "Introducing the data and Quality control using FASTQC"
 author: "Alfredo Iacoangeli"
-date: "16/03/2020"
+date: "15/03/2021"
 ---
 
 ## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
