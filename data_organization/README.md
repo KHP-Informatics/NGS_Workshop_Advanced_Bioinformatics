@@ -176,11 +176,11 @@ Note that you will not need to install  Microsoft VSCode. Feel free to answer no
 
 $ cd ~/
 
-$ wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh
+$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 
-$ chmod +x ./Anaconda3-5.3.0-Linux-x86_64.sh
+$ chmod +x ./Anaconda3-2020.02-Linux-x86_64.sh
 
-$ bash ./Anaconda3-5.3.0-Linux-x86_64.sh
+$ bash ./Anaconda3-2020.02-Linux-x86_64.sh
 
 $ source ~/.bashrc
 
