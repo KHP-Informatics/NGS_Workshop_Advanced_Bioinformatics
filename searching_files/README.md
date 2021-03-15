@@ -1,7 +1,7 @@
 ---
 title: "The Shell: Searching and Redirection"
 author: "Alfredo Iacoangeli"
-date: "16/03/2020"
+date: "15/03/2021"
 ---
 
 ## IMPORTANT: the paths to files and directories in this workshop are only examples. You will need use your own so please try not to copy and paste the commands but write them yourself matching the correct locations on your computer
@@ -86,7 +86,7 @@ a look at it and see if it has what you think it should.
 
 If we use '>>', it will append to rather than overwrite a file.  This can be useful for saving more than one search, for example:
  
- `zcat WES01_chr22m_R2.fastq.gz > WES01_chr22m_R2.fastq `
+`$ zcat WES01_chr22m_R2.fastq.gz > WES01_chr22m_R2.fastq `
  
 `$ grep -B1 -A2 NNNNNN WES01_chr22m_R2.fastq >> bad_reads.txt`
 
