@@ -170,6 +170,8 @@ Before going ahead with the other NGS practical materials we need to install the
 
 Please install Anaconda locally on your OpenStack instance and use it to install Trimmomatic, Fastqc, Samtools, Picard, Bedtools, BWA, Freebayes and any other tools you will need for this module.
 
+Note that you will not need to install  Microsoft VSCode. Feel free to answer no when Anaconda asks you to install it.
+
 ```
 
 $ cd ~/
