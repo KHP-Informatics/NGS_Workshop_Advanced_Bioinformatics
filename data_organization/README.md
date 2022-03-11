@@ -184,6 +184,10 @@ $ bash ./Anaconda3-2020.02-Linux-x86_64.sh
 
 $ source ~/.bashrc
 
+$ conda config --add channels defaults
+$ conda config --add channels bioconda
+$ conda config --add channels conda-forge
+
 $ conda install samtools
 $ conda install bwa
 $ conda install freebayes
