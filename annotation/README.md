@@ -26,7 +26,7 @@ Paper: http://nar.oxfordjournals.org/content/38/16/e164
 ### Download Annovar
 
 Annovar is not opensource and we could not install it with the conda command. However, it is free for academic use.
-Please register on the Annovar website and request a copy for this workshop http://download.openbioinformatics.org/annovar_download_form.php
+Please register on the Annovar website and request a copy for this workshop https://www.openbioinformatics.org/annovar/annovar_download_form.php
 After registering you will recive an email with a link to download the source code of Annovar on your personal computer. Please click on the link in the email, download the Annovar source code and upload on your Openstack instance using FileZilla (https://filezilla-project.org).
 We have used FileZilla before in a previous part of the practical (https://github.com/KHP-Informatics/NGS_Workshop_Advanced_Bioinformatics/tree/master/assessing_quality), please see the "assessing_quality" workshop if you do not remember how to use FileZilla to download/upload files to/from your OpenStack instance.
 
