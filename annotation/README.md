@@ -51,7 +51,7 @@ $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb
 $ ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp31a_interpro humandb/
 ```
 
-#### If you get a "permission denied" error message when you try to download the DBs, this might be due to annotate_variation.pl not to be set as an executable file. Please fix this but running "chmod +x annotate_variation.pl" in your temrinal
+#### If you get a "permission denied" error message when you try to download the DBs, this might be because of annotate_variation.pl not being set as an executable file. Please fix this but running "chmod +x annotate_variation.pl" in your temrinal and try again
 
 ### VCF to Annovar input format
 
