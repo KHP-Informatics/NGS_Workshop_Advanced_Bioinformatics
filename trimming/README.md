@@ -91,6 +91,8 @@ Change directories to the untrimmed fastq data location:
 
 Since the *Trimmomatic* command is complicated and we will be running it a number of times, let's draft the command in a **text editor**, such as vim or nano, etc. When finished, we will copy and paste the command into the terminal.
 
+####IMPORTANT: the trimmomatic command line below is one of the trickiest ones. It has a lot of flags and paths which might vary across systems and tool versions. It is likely not to work as it is so please double-check that all paths in it are correct. Please pay particular attention to the adaper path as the one in the example below is only correct for version 0.39-1, you might need too modify that to tell the tool where to find the adaprter sequences.
+
 For our paired-end fastq files, the command is:
 
 ```
