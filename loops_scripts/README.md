@@ -141,7 +141,7 @@ Most simply, it writes to the terminal (`echo`) the name of the file and the num
 
 In this case the list of files is specified using the asterisk wildcard: `*.fastq.gz`, i.e. all files that end in `.fastq.gz`. Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file one at a time. For each iteration the filename gets stored in the temporary variable called `filename`. Once the commands are executed for one file, the loop then stores the next filename in `filename` and executes the same commands on the next file. In the long run, it's best to use a name that will help point out a variable's function, so your future self will understand what you are thinking now.
  
-Essentially, **the number of loops == the number of items in the list**, in our case that is 6 times since we have 6 files in `~/ngs_course/dnaseq/data/untrimmed_fastq/` that end in `.fastq.gz`. This is done by changing the value of the `filename` variable 6 times. 
+Essentially, **the number of loops == the number of items in the list**, in our case that is twice since we have 2 files in `~/ngs_course/dnaseq/data/untrimmed_fastq/` that end in `.fastq.gz`. This is done by changing the value of the `filename` variable 2 times. 
 Pretty simple and cool, huh?
 
 ## Automating with Scripts
@@ -187,14 +187,14 @@ do
   echo $filename;
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq;
+  zgrep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq
 ``` 
   
 We'll also count the number of these reads and put that in a new file, using the count (`-c`) flag of `grep`:
 
 ```
 # grab the number of bad reads and write it to a summary file
-grep -cH NNNNNNNNNN $filename >> bad-reads.count.summary;
+zgrep -cH NNNNNNNNNN $filename >> bad-reads.count.summary
 done
 ```
 
@@ -214,13 +214,13 @@ cd ~/ngs_course/dnaseq/data/untrimmed_fastq
 for filename in *.fastq.gz
 
 do 
-  echo $filename; 
+  echo $filename 
 
   # grab all the bad read records (we need to use zgrep as *.fastq.gz is compressed)
-  zgrep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq;
+  zgrep -B1 -A2 NNNNNNNNNN $filename > $filename-bad-reads.fastq
 
   # grab the number of bad reads and write it to a summary file
-  zgrep -cH NNNNNNNNNN $filename >> bad-reads.count.summary;
+  zgrep -cH NNNNNNNNNN $filename >> bad-reads.count.summary
 done
 
 ```
