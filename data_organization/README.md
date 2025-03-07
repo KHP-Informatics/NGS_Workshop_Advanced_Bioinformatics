@@ -166,7 +166,7 @@ In your lab notebook, you likely keep track of the different reagents and kits u
 
 ### Install the tools you need for the pipeline
 
-Before going ahead with the other NGS practical materials we need to install the tools required for the analyses. In the Kotacoda workshops you have learned how to deploy Anaconda locally and use it to install other tools (https://katacoda.com/sjnewhouse/scenarios/bioconda_genmed)
+Before going ahead with the other NGS practical materials we need to install the tools required for the analyses.
 
 Please install Anaconda locally on your OpenStack instance and use it to install Trimmomatic, Fastqc, Samtools, Picard, Bedtools, BWA, Freebayes and any other tools you will need for this module.
 
