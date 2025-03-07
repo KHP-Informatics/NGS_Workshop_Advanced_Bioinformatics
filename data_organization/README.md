@@ -195,7 +195,7 @@ $ conda install picard
 $ conda install bedtools
 $ conda install trimmomatic
 $ conda install fastqc
-$ conda install vcflib
+$ conda install vcflib #this is currently not working. Please run "sudo apt install libvcflib-tools" to install vcflib.
 $ conda install any_other_tool_you_need
 
 ```
