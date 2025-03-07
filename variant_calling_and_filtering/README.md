@@ -90,7 +90,7 @@ SAF > 0 & SAR > 0 : reads on both strands
 RPR > 1 & RPL > 1 : at least two reads “balanced” to each side of the site
 
 ```
-$ conda install vcflib #if you did not install vcflib before. vcffilter is part of the vcflib suite
+$ sudo apt install libvcflib-tools #this is to install vcflib. vcffilter is part of the vcflib suite.
 
 $ vcffilter -f "QUAL > 1 & QUAL / AO > 10 & SAF > 0 & SAR > 0 & RPR > 1 & RPL > 1" \ 			
 	~/ngs_course/dnaseq/results/WES01_chr22m.vcf.gz > ~/ngs_course/dnaseq/results/WES01_chr22m_filtered.vcf
